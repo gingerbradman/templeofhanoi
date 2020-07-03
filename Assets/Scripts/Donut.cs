@@ -6,6 +6,6 @@ public class Donut : MonoBehaviour
 {
     public int size;
 
-    public int getSize() { return size; }
-    public void setSize(int x) { this.size = x; }
+    public int GetSize() { return size; }
+    public void SetSize(int x) { this.size = x; }
 }
