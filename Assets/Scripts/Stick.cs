@@ -8,14 +8,13 @@ public class Stick : MonoBehaviour
 
     public Slots slot;
 
+    public float slotx;
     private float slotHeight = -0.5f;
     public float GetSlotHeight() { return slotHeight; }
     public void SetSlotHeigh(float x) { slotHeight = x; }
 
     public List<Donut> donutList;
     public List<Slots> slotsList;
-
-    public SpriteRenderer selectedDonut;
 
     private void Start()
     {
@@ -32,11 +31,11 @@ public class Stick : MonoBehaviour
             slotsList.Add(slotChild);
             if (i == 0)
             {
-                slotChild.transform.position = slotChild.transform.position + new Vector3(0, GetSlotHeight(), 0);
+                slotChild.transform.position = slotChild.transform.position + new Vector3(slotx, GetSlotHeight(), 0);
             }
             else
             {
-                slotChild.transform.position = slotChild.transform.position + new Vector3(0, GetSlotHeight() + 0.08f, 0);
+                slotChild.transform.position = slotChild.transform.position + new Vector3(slotx, GetSlotHeight() + 0.08f, 0);
             }
         }
     }
@@ -56,8 +55,31 @@ public class Stick : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            selectedDonut = this.transform.Find(GetTopString()).gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
-            manager.SetPick(this, selectedDonut);
+            if (manager.GetState() == GameManager_script.State.Pick && this.donutList.Count != 0)
+            {
+                manager.selectedDonut = this.transform.Find(GetTopString()).gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
+                manager.selectedDonut.color = new Color(1f, 1f, 1f, .5f);
+                manager.SetPick(this, manager.selectedDonut);
+            }
+            else if (manager.GetState() == GameManager_script.State.Place && this == manager.GetStickPick())
+            {
+                manager.selectedDonut.color = new Color(1f, 1f, 1f, 1f);
+                manager.CancelPick();
+            }
+            else if (manager.GetState() == GameManager_script.State.Place && this != manager.GetStickPick())
+            {
+                manager.selectedDonut.color = new Color(1f, 1f, 1f, 1f);
+                this.AttemptToPlace(manager.GetDonutPick());
+                manager.CancelPick();
+            }
+            else
+            {
+                if (manager.selectedDonut != null)
+                {
+                    manager.selectedDonut.color = new Color(1f, 1f, 1f, 1f);
+                }
+                manager.CancelPick();
+            }
         }
     }
 
@@ -66,7 +88,6 @@ public void AttemptToPlace(Donut x)
         if (this.donutList.Count == 0)
         {
             PutOnStick(x);
-            Debug.Log("attemptToPlace If stick in empty get placed");
         }
         else
         {
@@ -101,6 +122,10 @@ public void AttemptToPlace(Donut x)
 
     public void PutOnStick(Donut x)
     {
+        if (manager.GetStickPick() != null)
+        {
+            manager.RemoveTopDonut();
+        }
         this.donutList.Add(x);
         GameObject child = this.transform.Find(GetTopString()).gameObject;
         x.transform.parent = child.transform;

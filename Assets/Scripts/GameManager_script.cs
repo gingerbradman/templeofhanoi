@@ -8,6 +8,8 @@ public class GameManager_script : MonoBehaviour
     public int maxDonuts = 2;
 
     public Stick stick;
+    public Stick stick2;
+    public Stick stick3;
     public Donut donut1;
     public Donut donut2;
     public Donut donut3;
@@ -20,6 +22,8 @@ public class GameManager_script : MonoBehaviour
     public Donut GetDonutPick() { return donutPick; }
     public void SetDonutPick(Donut x) { donutPick = x; }
 
+    public SpriteRenderer selectedDonut;
+
     public enum State
     {
         Setup,
@@ -28,14 +32,14 @@ public class GameManager_script : MonoBehaviour
         GameOver
     };
 
-    private State managerState = State.Setup;
+    private State managerState;
     public State GetState() { return managerState; }
     public void SetState(State x){ managerState = x; }
 
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("Setup", 2);
+        Invoke("Setup", .1f);
     }
 
     void Setup()
@@ -50,16 +54,30 @@ public class GameManager_script : MonoBehaviour
     }
 
     public void SetPick(Stick x, SpriteRenderer sprite)
-    {
-        Debug.Log(GetState());
-        Debug.Log(State.Pick);
-        //if (GetState() == State.Pick)
-        {
-            SetStickPick(x);
-            SetDonutPick(x.transform.Find(x.GetTopString()).gameObject.transform.GetChild(0).GetComponent<Donut>());
-            sprite.color = new Color(1f, 1f, 1f, .5f);
-        }
+    {   
+        SetStickPick(x);
+        SetDonutPick(x.transform.Find(x.GetTopString()).gameObject.transform.GetChild(0).GetComponent<Donut>());
+        sprite.color = new Color(1f, 1f, 1f, .5f);
+        SetState(State.Place);
     }
+
+    public void CancelPick()
+    {
+        ClearSets();
+        SetState(State.Pick);
+    }
+
+    public void ClearSets()
+    {
+        SetStickPick(null);
+        SetDonutPick(null);
+    }
+
+    public void RemoveTopDonut()
+    {
+        GetStickPick().donutList.Remove(GetStickPick().GetTop());
+    }
+
 
     private void Update()
     {
