@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114c814e4c12b044483aa8a50f29218e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 6056949007226353322, guid: 858e53d6231fea6419c9400d8c2aac8c, type: 3}
+  manager: {fileID: 0}
   slot: {fileID: 6204092091775879918, guid: 8fcf891aa3ca9ec4bae599cd80462d88, type: 3}
+  slot_x: -1
   donutList: []
   slotsList: []
 --- !u!212 &1312663024

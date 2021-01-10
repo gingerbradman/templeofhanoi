@@ -8,10 +8,10 @@ public class Stick : MonoBehaviour
 
     public Slots slot;
 
-    public float slotx;
+    public float slot_x;
     private float slotHeight = -0.5f;
     public float GetSlotHeight() { return slotHeight; }
-    public void SetSlotHeigh(float x) { slotHeight = x; }
+    public void SetSlotHeight(float x) { slotHeight = x; }
 
     public List<Donut> donutList;
     public List<Slots> slotsList;
@@ -31,11 +31,12 @@ public class Stick : MonoBehaviour
             slotsList.Add(slotChild);
             if (i == 0)
             {
-                slotChild.transform.position = slotChild.transform.position + new Vector3(slotx, GetSlotHeight(), 0);
+                slotChild.transform.position = slotChild.transform.position + new Vector3(slot_x, GetSlotHeight(), 0);
             }
             else
             {
-                slotChild.transform.position = slotChild.transform.position + new Vector3(slotx, GetSlotHeight() + 0.08f, 0);
+                slotChild.transform.position = slotChild.transform.position + new Vector3(slot_x, GetSlotHeight() + 0.08f, 0);
+                SetSlotHeight(GetSlotHeight() + 0.08f);
             }
         }
     }
@@ -52,6 +53,11 @@ public class Stick : MonoBehaviour
     }
 
     private void OnMouseOver()
+    {
+        selectDonut();
+    }
+
+    public void selectDonut()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -122,14 +128,14 @@ public void AttemptToPlace(Donut x)
 
     public void PutOnStick(Donut x)
     {
-        if (manager.GetStickPick() != null)
-        {
-            manager.RemoveTopDonut();
-        }
+        manager.SetStickPlace(this);
+        manager.RemoveTopDonut();
         this.donutList.Add(x);
+        x.stick = this;
         GameObject child = this.transform.Find(GetTopString()).gameObject;
         x.transform.parent = child.transform;
         x.transform.position = child.transform.position;
-        Debug.Log("Donut is put in list");
+        manager.CheckForWin();
+
     }
 }

@@ -43,8 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16cd38b25c0d8e344ac8e6418baa86b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDonuts: 2
+  settings: {fileID: 0}
+  maxDonuts: 3
+  randDonuts: 0
+  demoMode: 1
+  StartStick: {fileID: 0}
   stick: {fileID: 0}
+  stick2: {fileID: 0}
+  stick3: {fileID: 0}
   donut1: {fileID: 2257368120072072957, guid: 5e696da03d3dc2d4cabf01e27c4c2dca, type: 3}
   donut2: {fileID: 3571293900550384780, guid: 8454763254463fb4b851d8556f10299a, type: 3}
-  donut3: {fileID: 0}
+  donut3: {fileID: 3571293900550384780, guid: 0343eb2513fb975408ef1b646396914c, type: 3}
+  donut4: {fileID: 3571293900550384780, guid: af7a392b7802e6749a6cf8b8e87ea246, type: 3}
+  donut5: {fileID: 3571293900550384780, guid: d2a0b1b4942236e43adf2c7e3baa24f4, type: 3}
+  donut6: {fileID: 3571293900550384780, guid: b40e20cdec34ee442bc1d165ec66bf69, type: 3}
+  donut7: {fileID: 3571293900550384780, guid: b4239ea267cc54a4ead98c77b483ea92, type: 3}
+  selectedDonut: {fileID: 0}
+  winText: {fileID: 0}
