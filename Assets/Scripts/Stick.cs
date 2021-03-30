@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 using UnityEngine;
 
 public class Stick : MonoBehaviour
@@ -8,6 +9,8 @@ public class Stick : MonoBehaviour
 
     public Slots slot;
 
+    public AudioSource correctSound;
+    public AudioSource wrongSound;
     public float slot_x;
     private float slotHeight = -0.5f;
     public float GetSlotHeight() { return slotHeight; }
@@ -94,6 +97,7 @@ public void AttemptToPlace(Donut x)
         if (this.donutList.Count == 0)
         {
             PutOnStick(x);
+            correctSound.Play();
         }
         else
         {
@@ -106,10 +110,11 @@ public void AttemptToPlace(Donut x)
         if (x.GetSize() < GetTop().GetSize())
         {
             PutOnStick(x);
+            correctSound.Play();
         }
         else
         {
-
+            wrongSound.Play();
         }
     }
 

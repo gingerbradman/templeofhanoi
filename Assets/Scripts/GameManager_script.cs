@@ -19,6 +19,7 @@ public class GameManager_script : MonoBehaviour
     public Stick stick;
     public Stick stick2;
     public Stick stick3;
+
     public Donut donut1;
     public Donut donut2;
     public Donut donut3;
@@ -84,23 +85,23 @@ public class GameManager_script : MonoBehaviour
         case 1:
                 donut1 = Instantiate(donut1);
 
-                stick.AttemptToPlace(donut1);
+                stick.PutOnStick(donut1);
                 break; 
         case 2:
                 donut1 = Instantiate(donut1);
                 donut2 = Instantiate(donut2);
 
-                stick.AttemptToPlace(donut2);
-                stick.AttemptToPlace(donut1);
+                stick.PutOnStick(donut2);
+                stick.PutOnStick(donut1);
                 break; 
         case 3:
                 donut1 = Instantiate(donut1);
                 donut2 = Instantiate(donut2);
                 donut3 = Instantiate(donut3);
 
-                stick.AttemptToPlace(donut3);
-                stick.AttemptToPlace(donut2);
-                stick.AttemptToPlace(donut1);
+                stick.PutOnStick(donut3);
+                stick.PutOnStick(donut2);
+                stick.PutOnStick(donut1);
                 break; 
         case 4:
                 donut1 = Instantiate(donut1);
@@ -108,10 +109,10 @@ public class GameManager_script : MonoBehaviour
                 donut3 = Instantiate(donut3);
                 donut4 = Instantiate(donut4);
 
-                stick.AttemptToPlace(donut4);
-                stick.AttemptToPlace(donut3);
-                stick.AttemptToPlace(donut2);
-                stick.AttemptToPlace(donut1);
+                stick.PutOnStick(donut4);
+                stick.PutOnStick(donut3);
+                stick.PutOnStick(donut2);
+                stick.PutOnStick(donut1);
                 break; 
         case 5:
                 donut1 = Instantiate(donut1);
@@ -120,11 +121,11 @@ public class GameManager_script : MonoBehaviour
                 donut4 = Instantiate(donut4);
                 donut5 = Instantiate(donut5);
 
-                stick.AttemptToPlace(donut5);
-                stick.AttemptToPlace(donut4);
-                stick.AttemptToPlace(donut3);
-                stick.AttemptToPlace(donut2);
-                stick.AttemptToPlace(donut1);
+                stick.PutOnStick(donut5);
+                stick.PutOnStick(donut4);
+                stick.PutOnStick(donut3);
+                stick.PutOnStick(donut2);
+                stick.PutOnStick(donut1);
                 break; 
         case 6:
                 donut1 = Instantiate(donut1);
@@ -134,12 +135,12 @@ public class GameManager_script : MonoBehaviour
                 donut5 = Instantiate(donut5);
                 donut6 = Instantiate(donut6);
 
-                stick.AttemptToPlace(donut6);
-                stick.AttemptToPlace(donut5);
-                stick.AttemptToPlace(donut4);
-                stick.AttemptToPlace(donut3);
-                stick.AttemptToPlace(donut2);
-                stick.AttemptToPlace(donut1);
+                stick.PutOnStick(donut6);
+                stick.PutOnStick(donut5);
+                stick.PutOnStick(donut4);
+                stick.PutOnStick(donut3);
+                stick.PutOnStick(donut2);
+                stick.PutOnStick(donut1);
                 break; 
         case 7:
                 donut1 = Instantiate(donut1);
@@ -150,13 +151,13 @@ public class GameManager_script : MonoBehaviour
                 donut6 = Instantiate(donut6);
                 donut7 = Instantiate(donut7);
 
-                stick.AttemptToPlace(donut7);
-                stick.AttemptToPlace(donut6);
-                stick.AttemptToPlace(donut5);
-                stick.AttemptToPlace(donut4);
-                stick.AttemptToPlace(donut3);
-                stick.AttemptToPlace(donut2);
-                stick.AttemptToPlace(donut1);
+                stick.PutOnStick(donut7);
+                stick.PutOnStick(donut6);
+                stick.PutOnStick(donut5);
+                stick.PutOnStick(donut4);
+                stick.PutOnStick(donut3);
+                stick.PutOnStick(donut2);
+                stick.PutOnStick(donut1);
                 break;
         }
         SetState(State.Pick);
