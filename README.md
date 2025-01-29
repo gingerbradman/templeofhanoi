@@ -1,15 +1,16 @@
-# towerofhanoi
-Pixelated game exercise of Tower of Hanoi
+# Temple Of Hanoi
 
-This game was a small sample project by Brad K. and Rebecca H.
+Pixelated game exercise of Tower of Hanoi. Temple of Hanoi is based off the Tower of Hanoi puzzle with adjustable difficulty and random factor.
 
-Official Title: Temple of Hanoi
+Play it here: https://gingerbradman.itch.io/temple-of-hanoi
 
-Temple of Hanoi is based off the Tower of Hanoi puzzle with adjustable difficulty and random factor.
+![game](https://github.com/gingerbradman/portfolio/blob/master/static/clips/TempleOfHanoi.webp)
 
-You can play it here on itch.io:
-https://gingerbradman.itch.io/temple-of-hanoi
+## Details
+The game is published and tested on itch.io 
 
-All of the art, music and code was written by the above two individuals.
+Developed in Unity. Art made in Aseprite.
 
-I recommend lowering the volume, this was an interesting first attempt at music to say the least.
+## Created for
+
+Early Sample Project. Developed by Gingerbradman (https://github.com/gingerbradman)
